@@ -1,4 +1,4 @@
-package com.wds.concurrency.base.immutableObjects;
+package com.wds.concurrency.immutableObjects;
 
 /**
  * <pre>

@@ -1,4 +1,4 @@
-package com.wds.concurrency.base.forkJoin.sort;
+package com.wds.concurrency.forkJoin.sort;
 
 import java.util.Arrays;
 import java.util.concurrent.RecursiveAction;

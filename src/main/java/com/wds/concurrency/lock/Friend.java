@@ -1,4 +1,4 @@
-package com.wds.concurrency.base.lock;
+package com.wds.concurrency.lock;
 
 import java.util.concurrent.locks.Lock;
 import java.util.concurrent.locks.ReentrantLock;

@@ -1,4 +1,4 @@
-package com.wds.concurrency.base.immutableObjects;
+package com.wds.concurrency.immutableObjects;
 
 /**
  * 不可变类，由RGB三个颜色组成的色彩类

@@ -1,4 +1,4 @@
-package com.wds.concurrency.base.forkJoin.oracle;
+package com.wds.concurrency.forkJoin.oracle;
 
 import java.util.concurrent.RecursiveAction;
 

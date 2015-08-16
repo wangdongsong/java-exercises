@@ -1,4 +1,4 @@
-package com.wds.concurrency.base.deadlock;
+package com.wds.concurrency.deadlock;
 
 /**
  * Created by wangdongsong on 15-8-8.

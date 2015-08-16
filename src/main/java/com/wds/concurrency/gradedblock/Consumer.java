@@ -1,25 +1,25 @@
-package com.wds.concurrency.base.gradedblock;
+package com.wds.concurrency.gradedblock;
 
 import java.util.Random;
 
 /**
  * Created by wangdongsong on 15-8-8.
  */
-public class Producer implements Runnable {
+public class Consumer implements Runnable {
 
     private Drop drop;
 
-    public Producer(Drop drop) {
+    public Consumer(Drop drop) {
         this.drop = drop;
     }
 
     @Override
     public void run() {
-        String info[] = {"you", "me", "and", "her"};
+
         Random random = new Random();
-        //System.out.println("producer");
-        for (int i = 0; i < info.length; i++) {
-            drop.put(info[i]);
+
+        for (String msg = drop.take(); !msg.equals("DONE"); msg = drop.take()) {
+            System.out.format("Message received: %s%n", msg);
 
             try {
                 Thread.sleep(1);
@@ -28,6 +28,5 @@ public class Producer implements Runnable {
             }
         }
 
-        drop.put("DONE");
     }
 }

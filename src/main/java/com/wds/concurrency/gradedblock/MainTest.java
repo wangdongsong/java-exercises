@@ -1,4 +1,4 @@
-package com.wds.concurrency.base.gradedblock;
+package com.wds.concurrency.gradedblock;
 
 /**
  * Created by wangdongsong on 15-8-8.

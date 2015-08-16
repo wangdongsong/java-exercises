@@ -1,4 +1,4 @@
-package com.wds.concurrency.base.immutableObjects;
+package com.wds.concurrency.immutableObjects;
 
 /**
  * Created by wangdongsong on 15-8-9.

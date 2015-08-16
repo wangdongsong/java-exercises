@@ -1,4 +1,4 @@
-package com.wds.concurrency.base.lock;
+package com.wds.concurrency.lock;
 
 /**
  * Created by wangdongsong on 15-8-9.
