@@ -10,6 +10,7 @@ import java.util.concurrent.TimeUnit;
 /**
  * Created by wangdongsong on 15-8-9.
  */
+@SuppressWarnings("unchecked")
 public class SortTaskTest {
     private static final int NARRAY = 16;
 
