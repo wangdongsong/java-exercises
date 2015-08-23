@@ -12,7 +12,7 @@ import java.util.concurrent.ExecutionException;
 import java.util.concurrent.Future;
 
 /**
- * Created by WANGDONGSONG846 on 2015-08-22.
+ * Created by wangdongsong on 2015-08-22.
  */
 public class SimpleClient {
     private static final Logger LOGGER = LoggerFactory.getLogger(SimpleClient.class);

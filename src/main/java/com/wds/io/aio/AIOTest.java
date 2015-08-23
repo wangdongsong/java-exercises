@@ -4,7 +4,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 /**
- * Created by WANGDONGSONG846 on 2015-08-22.
+ * Created by wangdongsong on 2015-08-22.
  */
 public class AIOTest {
     private static final Logger LOGGER = LoggerFactory.getLogger(AIOTest.class);

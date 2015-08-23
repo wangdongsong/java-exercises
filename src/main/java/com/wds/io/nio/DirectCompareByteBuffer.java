@@ -18,7 +18,7 @@ import java.nio.ByteBuffer;
  * 的花费却比 ByteBuffer 高。DirectBuffer 与 ByteBuffer 相比较的代码
  *
  *
- * Created by WANGDONGSONG846 on 2015-08-22.
+ * Created by wangdongsong on 2015-08-22.
  * </pre>
  */
 public class DirectCompareByteBuffer {
