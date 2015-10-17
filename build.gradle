@@ -25,6 +25,7 @@ task createJavaProject << {
 
 //仓库
 repositories {
+	mavenLocal()
     jcenter()
     mavenCentral()
     maven {
