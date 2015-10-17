@@ -1,0 +1,43 @@
+group 'com.wds'
+version '1.0'
+
+apply plugin: 'idea'
+apply plugin: 'java'
+
+sourceCompatibility = 1.8
+
+allprojects {
+    //增加编码设置，防止编译时出现乱码
+    compileJava.options.encoding = 'UTF-8'//编码设置
+    compileTestJava.options.encoding = 'UTF-8'
+}
+
+ext {
+    springVersion = '4.2.0.RELEASE'
+}
+
+
+//创建工程的目录结构
+task createJavaProject << {
+    sourceSets*.java.srcDirs*.each { it.mkdirs() }
+    sourceSets*.resources.srcDirs*.each { it.mkdirs() }
+}
+
+//仓库
+repositories {
+	mavenLocal()
+    jcenter()
+    mavenCentral()
+    maven {
+        url { 'https://repo1.maven.org/maven2'; 'http://maven.oschina.net/content/groups/public/' }
+    }
+}
+
+//依赖
+dependencies {
+    testCompile group: 'junit', name: 'junit', version: '4.11'
+    compile group: 'ch.qos.logback', name: 'logback-core', version: "1.1.3"
+    compile 'ch.qos.logback:logback-classic:1.1.3'
+
+    compile 'org.springframework:spring-context:4.2.0.RELEASE'
+}
