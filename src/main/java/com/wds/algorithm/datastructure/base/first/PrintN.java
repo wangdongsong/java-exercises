@@ -1,4 +1,4 @@
-package com.wds.datastructure.base.first;
+package com.wds.algorithm.datastructure.base.first;
 
 public class PrintN {
 	

@@ -1,4 +1,4 @@
-package com.wds.sort;
+package com.wds.algorithm.sort;
 
 import java.util.Arrays;
 
