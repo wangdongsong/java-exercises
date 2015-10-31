@@ -45,5 +45,8 @@ dependencies {
     compile group: 'org.apache.logging.log4j', name: 'log4j-jul', version: '2.4'
     compile group: 'org.apache.logging.log4j', name: 'log4j-jcl', version: '2.4'
 
+    compile 'com.google.guava:guava:18.0'
+
+    compile 'commons-collections:commons-collections:3.2.1'
     //compile 'org.springframework:spring-context:4.2.0.RELEASE'
 }
