@@ -1,5 +1,8 @@
 package com.wds.algorithm.sort;
 
+/**
+ * 平均速度O(n*n)，最坏情况下的速度为O(n*n)
+ */
 public class SimpleSelectSort {
 
 	public static void main(String[] args) {
