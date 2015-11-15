@@ -49,4 +49,11 @@ dependencies {
 
     compile 'commons-collections:commons-collections:3.2.1'
     //compile 'org.springframework:spring-context:4.2.0.RELEASE'
+
+    compile 'cglib:cglib-full:2.0.2'
+    compile 'cglib:cglib:3.2.0'
+    compile 'cglib:cglib-nodep:3.2.0'
+
+    compile 'asm:asm:3.3.1'
+
 }
