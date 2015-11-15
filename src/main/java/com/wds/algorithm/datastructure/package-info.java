@@ -2,4 +2,4 @@
  * @author wds
  *
  */
-package com.wds.datastructure;
+package com.wds.algorithm.datastructure;

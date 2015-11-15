@@ -1,7 +1,10 @@
-package com.wds.sort;
+package com.wds.algorithm.sort;
 
 import java.util.Arrays;
 
+/**
+ * 平均速度O(nlogn)，最坏情况下的速度为O(n*n)
+ */
 public class QuickSort {
 
 	public static void main(String[] args) {
