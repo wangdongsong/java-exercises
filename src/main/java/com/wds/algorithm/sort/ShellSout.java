@@ -1,4 +1,4 @@
-package com.wds.sort;
+package com.wds.algorithm.sort;
 
 /**
  * 希尔排序
@@ -6,6 +6,8 @@ package com.wds.sort;
  * 希尔排序(Shell Sort)是插入排序的一种。<br>
  * 也称缩小增量排序，是直接插入排序算法的一种更高效的改进版本。希尔排序是非稳定排序算法
  * @author wds
+ *
+ * 平均速度O(n 3/2)，最坏情况下的速度为O(n*n)
  *
  */
 public class ShellSout {
