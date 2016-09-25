@@ -5,14 +5,15 @@
             <PatternLayout pattern="%d [%t] %-5level %logger{36} %L: %msg%n"/>
         </Console>
 
+        <!--
         <Flume name="eventLogger" compress="false">
             <Agent host="127.0.0.1" port="8800"/>
-        </Flume>
+        </Flume>-->
     </Appenders>
     <Loggers>
         <Root level="TRACE">
             <AppenderRef ref="Console"/>
-            <AppenderRef ref="eventLogger" />
+            <!--<AppenderRef ref="eventLogger" />-->
         </Root>
     </Loggers>
 </Configuration>
