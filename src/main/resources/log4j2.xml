@@ -5,6 +5,10 @@
             <PatternLayout pattern="%d [%t] %-5level %logger{36} %L: %msg%n"/>
         </Console>
 
+        <Console name="Con_JSON" target="SYSTEM_OUT">
+            <JSONLayout/>
+        </Console>
+
         <!--
         <Flume name="eventLogger" compress="false">
             <Agent host="127.0.0.1" port="8800"/>
@@ -13,6 +17,7 @@
     <Loggers>
         <Root level="TRACE">
             <AppenderRef ref="Console"/>
+            <AppenderRef ref="Con_JSON" />
             <!--<AppenderRef ref="eventLogger" />-->
         </Root>
     </Loggers>
