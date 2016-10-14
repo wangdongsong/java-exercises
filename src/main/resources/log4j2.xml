@@ -9,6 +9,15 @@
             <JSONLayout/>
         </Console>
 
+        <RollingFile name="RollingFile" fileName="logs/app.log"
+                     filePattern="logs/$${date:yyyy-MM}/app-%d{MM-dd-yyyy}-%i.log">
+            <JSONLayout/>
+            <Policies>
+                <TimeBasedTriggeringPolicy />
+                <SizeBasedTriggeringPolicy size="250 MB"/>
+            </Policies>
+         </RollingFile>
+
         <!--
         <Flume name="eventLogger" compress="false">
             <Agent host="127.0.0.1" port="8800"/>
@@ -18,6 +27,7 @@
         <Root level="TRACE">
             <AppenderRef ref="Console"/>
             <AppenderRef ref="Con_JSON" />
+            <AppenderRef ref="RollingFile"/>
             <!--<AppenderRef ref="eventLogger" />-->
         </Root>
     </Loggers>
