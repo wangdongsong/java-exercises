@@ -11,7 +11,7 @@ public class LogTest {
 
     public static void main(String[] args) {
         for (int i = 0; i < 10; i++) {
-            LOGGER.info("test test王东松");
+            LOGGER.info("test test");
         }
     }
 }
