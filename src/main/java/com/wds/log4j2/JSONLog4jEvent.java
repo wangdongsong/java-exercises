@@ -144,8 +144,6 @@ public class JSONLog4jEvent implements LogEvent{
 
     /**
      * Converter used by JsonSerilize annotation on mixin.
-     *
-     * Created by jeremyfranklin-ross on 7/28/15.
      */
     public static class LogEventToLogStashLogEventConverter extends StdConverter<LogEvent, JSONLog4jEvent> {
 
