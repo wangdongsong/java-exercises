@@ -3,9 +3,8 @@ package com.wds.rabbitmq.hello;
 import com.rabbitmq.client.Channel;
 import com.rabbitmq.client.Connection;
 import com.rabbitmq.client.ConnectionFactory;
-import org.apache.log4j.LogManager;
-import org.apache.log4j.Logger;
-import org.apache.log4j.spi.LoggerFactory;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import java.io.IOException;
 import java.util.concurrent.TimeoutException;
@@ -16,17 +15,17 @@ import java.util.concurrent.TimeoutException;
 public class HelloWorldProducer {
 
     private static final Logger LOGGER = LogManager.getLogger(HelloWorldProducer.class);
-    private static final String host = "192.168.254.215";
+    private static final String host = "192.168.254.205";
     private static final String QUEUE_NAME = "hello";
 
     public static void main(String[] args) throws IOException, TimeoutException {
         ConnectionFactory factory = new ConnectionFactory();
         factory.setHost(host);
 
-        factory.setPort(5672);
+        factory.setPort(5673);
         factory.setUsername("wds");
         factory.setPassword("wds");
-        factory.setVirtualHost("wds");
+        factory.setVirtualHost("wdsVhost");
 
         Connection connection = factory.newConnection();
         Channel channel = connection.createChannel();

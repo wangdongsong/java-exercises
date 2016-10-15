@@ -19,7 +19,7 @@ package com.wds.concurrency.immutableObjects;
  *  4、只有一个字段是对象引用，并且被引用的对象也是不可变对象。
  *
  * </pre>
- * Created by wangdongsong on 15-8-9.
+ * Created by wangdongsong1229@163.com on  15-8-9.
  */
 public final class ImmutableRGB {
 

@@ -4,7 +4,7 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 /**
- * Created by wangdongsong on 2016/10/5.
+ * Created by wangdongsong1229@163.com on  2016/10/5.
  */
 public class LinkTest {
 

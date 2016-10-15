@@ -11,7 +11,7 @@ import java.nio.channels.FileChannel;
 
 /**
  * 对传统IO、基于Byte的IO，基于内存映射的IO的对比
- * Created by wangdongsong on 2015-08-22.
+ * Created by wangdongsong1229@163.com on  2015-08-22.
  */
 public class NIOComparator {
 

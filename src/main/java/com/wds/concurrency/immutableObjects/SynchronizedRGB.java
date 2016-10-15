@@ -2,7 +2,7 @@ package com.wds.concurrency.immutableObjects;
 
 /**
  * 不可变类，由RGB三个颜色组成的色彩类
- * Created by wangdongsong on 15-8-9.
+ * Created by wangdongsong1229@163.com on  15-8-9.
  */
 public class SynchronizedRGB {
     private int red;

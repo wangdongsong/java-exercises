@@ -11,7 +11,7 @@ import java.nio.channels.FileChannel;
 
 /**
  * NIO的散射和聚集
- * Created by wangdongsong on 15-8-16.
+ * Created by wangdongsong1229@163.com on  15-8-16.
  */
 public class NIOScatterAndGather {
 

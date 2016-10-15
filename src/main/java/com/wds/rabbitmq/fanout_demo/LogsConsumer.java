@@ -12,7 +12,7 @@ import java.security.NoSuchAlgorithmException;
 import java.util.concurrent.TimeoutException;
 
 /**
- * Created by wangdongsong on 2016/9/1.
+ * Created by wangdongsong1229@163.com on  2016/9/1.
  */
 public class LogsConsumer {
     private static final Logger LOGGER = LogManager.getLogger(LogsConsumer.class);
@@ -24,9 +24,9 @@ public class LogsConsumer {
             Connection connection = factory.newConnection();
             Channel channel = connection.createChannel();
             channel.exchangeDeclare("uploadExchange", "fanout");
-            channel.queueDeclare("addPointQueue",false, false, false, null);
-            channel.queueBind("addPointQueue", "uploadExchange", "world");
-            channel.basicConsume("addPointQueue", false, new DefaultConsumer(channel){
+            channel.queueDeclare("logsQueue",false, false, false, null);
+            channel.queueBind("logsQueue", "uploadExchange", "*");
+            channel.basicConsume("logsQueue", false, new DefaultConsumer(channel){
                 @Override
                 public void handleConsumeOk(String consumerTag) {
                     super.handleConsumeOk(consumerTag);

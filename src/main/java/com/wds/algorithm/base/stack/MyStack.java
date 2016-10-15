@@ -4,7 +4,7 @@ import java.util.Arrays;
 
 /**
  * 栈的特点：先进后出或后进先出的原则，只能在一端操作
- * Created by wangdongsong on 2016/9/26.
+ * Created by wangdongsong1229@163.com on  2016/9/26.
  */
 public class MyStack {
 

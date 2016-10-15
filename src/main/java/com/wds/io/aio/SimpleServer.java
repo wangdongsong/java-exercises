@@ -12,7 +12,7 @@ import java.nio.channels.CompletionHandler;
 import java.util.concurrent.ExecutionException;
 
 /**
- * Created by wangdongsong on 2015-08-22.
+ * Created by wangdongsong1229@163.com on  2015-08-22.
  */
 public class SimpleServer {
     private static final Logger LOGGER = LoggerFactory.getLogger(SimpleServer.class);

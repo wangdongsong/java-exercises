@@ -1,7 +1,7 @@
 package com.wds.algorithm.base.hash;
 
 /**
- * Created by wangdongsong on 2016/9/25.
+ * Created by wangdongsong1229@163.com on  2016/9/25.
  */
 public class MyEntry {
 

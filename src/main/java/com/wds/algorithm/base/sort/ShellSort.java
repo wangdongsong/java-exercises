@@ -2,7 +2,7 @@ package com.wds.algorithm.base.sort;
 
 /**
  * 希尔排序
- * Created by wangdongsong on 2016/10/10.
+ * Created by wangdongsong1229@163.com on  2016/10/10.
  */
 public class ShellSort {
 

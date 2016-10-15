@@ -14,7 +14,7 @@ import java.security.NoSuchAlgorithmException;
 import java.util.concurrent.TimeoutException;
 
 /**
- * Created by wangdongsong on 2016/8/31.
+ * Created by wangdongsong1229@163.com on  2016/8/31.
  */
 public class FanoutProducer {
 
@@ -29,13 +29,9 @@ public class FanoutProducer {
             Connection connection = factory.newConnection();
             Channel channel = connection.createChannel();
 
-            channel.exchangeDeclare("wdsExchange", "topic");
-            channel.queueDeclare(ERROR_QUEUE_NAME,false, false, true, null );
-            channel.queueDeclare(INFO_QUEUE_NAME, false, false, true, null);
-            channel.queueBind(ERROR_QUEUE_NAME, "wdsExchange", "error*");
-            channel.queueBind(INFO_QUEUE_NAME, "wdsExchange", "info*");
+            channel.exchangeDeclare("uploadExchange", "fanout");
 
-            channel.basicPublish("wdsExchange", "error*", null, "ErrorHelloWorld".getBytes());
+            channel.basicPublish("uploadExchange", "Hello", null, "add points".getBytes());
 
             channel.close();
             connection.close();

@@ -5,7 +5,7 @@ import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 /**
- * Created by wangdongsong on 15-8-14.
+ * Created by wangdongsong1229@163.com on  15-8-14.
  */
 public class StreamCollect {
 

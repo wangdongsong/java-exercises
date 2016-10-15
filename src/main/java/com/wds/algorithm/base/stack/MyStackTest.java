@@ -6,7 +6,7 @@ import org.apache.logging.log4j.Logger;
 
 /**
  * 利用栈，将10进制转8进制
- * Created by wangdongsong on 2016/10/4.
+ * Created by wangdongsong1229@163.com on  2016/10/4.
  */
 public class MyStackTest {
 

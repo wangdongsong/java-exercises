@@ -3,7 +3,7 @@ package com.wds.concurrency.gradedblock;
 import java.util.Random;
 
 /**
- * Created by wangdongsong on 15-8-8.
+ * Created by wangdongsong1229@163.com on  15-8-8.
  */
 public class Producer implements Runnable {
 

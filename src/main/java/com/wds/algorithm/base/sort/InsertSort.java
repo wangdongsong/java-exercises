@@ -1,7 +1,7 @@
 package com.wds.algorithm.base.sort;
 
 /**
- * Created by wangdongsong on 2016/10/8.
+ * Created by wangdongsong1229@163.com on  2016/10/8.
  */
 public class InsertSort {
     private int[] arrays;

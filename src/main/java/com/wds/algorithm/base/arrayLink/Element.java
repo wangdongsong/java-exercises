@@ -1,7 +1,7 @@
 package com.wds.algorithm.base.arrayLink;
 
 /**
- * Created by wangdongsong on 2016/10/5.
+ * Created by wangdongsong1229@163.com on  2016/10/5.
  */
 public class Element {
     private int data;

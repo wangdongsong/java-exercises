@@ -2,7 +2,7 @@ package com.wds.algorithm.base.queue;
 
 /**
  * 顺序队
- * Created by wangdongsong on 2016/10/4.
+ * Created by wangdongsong1229@163.com on  2016/10/4.
  */
 public class ArrayQueue {
 

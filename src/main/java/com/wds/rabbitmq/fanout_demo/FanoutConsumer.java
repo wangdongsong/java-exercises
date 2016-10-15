@@ -12,7 +12,7 @@ import java.security.NoSuchAlgorithmException;
 import java.util.concurrent.TimeoutException;
 
 /**
- * Created by wangdongsong on 2016/9/1.
+ * Created by wangdongsong1229@163.com on  2016/9/1.
  */
 public class FanoutConsumer {
     private static final Logger LOGGER = LogManager.getLogger(FanoutConsumer.class);
@@ -23,9 +23,10 @@ public class FanoutConsumer {
             factory.setUri(RabbitMQBaseInfo.RABBITMQ_URL);
             Connection connection = factory.newConnection();
             Channel channel = connection.createChannel();
-
-            String topicQueueError;
-            topicQueueError = channel.basicConsume("topicQueueError", false, new DefaultConsumer(channel){
+            channel.exchangeDeclare("uploadExchange", "fanout");
+            channel.queueDeclare("addPointQueue",false, false, false, null);
+            channel.queueBind("addPointQueue", "uploadExchange", "world");
+            channel.basicConsume("addPointQueue", false, new DefaultConsumer(channel){
                 @Override
                 public void handleConsumeOk(String consumerTag) {
                     super.handleConsumeOk(consumerTag);

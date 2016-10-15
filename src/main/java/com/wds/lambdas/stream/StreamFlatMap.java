@@ -6,7 +6,7 @@ import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 /**
- * Created by wangdongsong on 15-8-15.
+ * Created by wangdongsong1229@163.com on  15-8-15.
  */
 public class StreamFlatMap {
     public static void main(String[] args) {

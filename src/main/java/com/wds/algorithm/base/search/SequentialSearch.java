@@ -2,7 +2,7 @@ package com.wds.algorithm.base.search;
 
 /**
  * 顺序查找
- * Created by wangdongsong on 2016/10/13.
+ * Created by wangdongsong1229@163.com on  2016/10/13.
  */
 public class SequentialSearch {
 

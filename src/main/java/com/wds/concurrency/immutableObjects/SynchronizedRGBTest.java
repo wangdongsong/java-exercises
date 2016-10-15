@@ -1,7 +1,7 @@
 package com.wds.concurrency.immutableObjects;
 
 /**
- * Created by wangdongsong on 15-8-9.
+ * Created by wangdongsong1229@163.com on  15-8-9.
  */
 public class SynchronizedRGBTest {
     public static void main(String[] args) {

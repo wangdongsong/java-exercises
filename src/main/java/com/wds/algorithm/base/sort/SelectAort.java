@@ -2,7 +2,7 @@ package com.wds.algorithm.base.sort;
 
 /**
  * 简单选择排序
- * Created by wangdongsong on 2016/10/11.
+ * Created by wangdongsong1229@163.com on  2016/10/11.
  */
 public class SelectAort {
 

@@ -1,7 +1,7 @@
 package com.wds.lambdas.java8_exercises_book;
 
 /**
- * Created by wangdongsong on 15-8-15.
+ * Created by wangdongsong1229@163.com on  15-8-15.
  */
 public final class Track {
     private final String name;
