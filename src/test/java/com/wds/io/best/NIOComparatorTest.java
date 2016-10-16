@@ -8,7 +8,7 @@ import org.slf4j.LoggerFactory;
 
 /**
  * NIOComparator的测试类
- * Created by wangdongsong on 2015-08-22.
+ * Created by wangdongsong1229@163.com on  2015-08-22.
  */
 
 public class NIOComparatorTest {
