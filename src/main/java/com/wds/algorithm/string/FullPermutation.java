@@ -59,4 +59,6 @@ public class FullPermutation {
         array[right] = temp;
     }
 
+
+
 }
