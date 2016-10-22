@@ -24,11 +24,11 @@
         </Flume>-->
     </Appenders>
     <Loggers>
-        <Root level="TRACE">
+        <Root level="DEBUG">
             <AppenderRef ref="Console"/>
-            <AppenderRef ref="Con_JSON" />
+            <!--<AppenderRef ref="Con_JSON" />
             <AppenderRef ref="RollingFile"/>
-            <!--<AppenderRef ref="eventLogger" />-->
+            <AppenderRef ref="eventLogger" />-->
         </Root>
     </Loggers>
 </Configuration>
