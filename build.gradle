@@ -69,6 +69,7 @@ dependencies {
     }
     compile group: 'org.apache.hadoop', name: 'hadoop-common', version: "${hadoopVersion}"
 
+    compile group: 'org.apache.zookeeper', name: 'zookeeper', version: '3.4.6'
 
     //log4j2 flume appender
     compile group: 'org.apache.logging.log4j', name: 'log4j-flume-ng', version: '2.7'
