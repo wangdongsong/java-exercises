@@ -13,10 +13,36 @@ public class CountDownLatchTest {
 
     public static void main(String[] args) throws InterruptedException {
 
-        baseUsing();
+        //基本用法
+        //baseUsing();
 
+        baseUsing(2);
 
     }
+
+    private static void baseUsing(int flag) {
+        CountDownLatch cdl = new CountDownLatch(1);
+
+        new Thread(() -> {
+            try {
+                LOGGER.info("CountDownLatch is waiting, and the baseline is " + System.currentTimeMillis());
+                cdl.await();
+                LOGGER.info("CountDownLatch contiue execute, and the endline is " + System.currentTimeMillis());
+            } catch (InterruptedException e) {
+                LOGGER.error(e.getMessage(), e);
+            }
+
+        }).start();
+
+        try {
+            Thread.sleep(2000);
+        } catch (InterruptedException e) {
+            LOGGER.error(e.getMessage(), e);
+        }
+
+        cdl.countDown();
+    }
+
 
     /**
      * CountDownLatch基本用法
