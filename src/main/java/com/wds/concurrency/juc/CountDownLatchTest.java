@@ -8,11 +8,21 @@ import java.util.concurrent.CountDownLatch;
 /**
  * Created by wds on 2015/10/25.
  */
-public class CountDownLathTest {
-    private static final Logger LOGGER = LogManager.getLogger(CountDownLathTest.class);
+public class CountDownLatchTest {
+    private static final Logger LOGGER = LogManager.getLogger(CountDownLatchTest.class);
 
     public static void main(String[] args) throws InterruptedException {
 
+        baseUsing();
+
+
+    }
+
+    /**
+     * CountDownLatch基本用法
+     * @throws InterruptedException
+     */
+    private static void baseUsing() throws InterruptedException {
         CountDownLatch countDownLatch = new CountDownLatch(3);
 
         new Thread(() -> run(1, countDownLatch)).start();
@@ -22,8 +32,6 @@ public class CountDownLathTest {
         countDownLatch.await();
 
         LOGGER.info("Main is end");
-
-
     }
 
     private static void run(int i, CountDownLatch countDownLatch) {
