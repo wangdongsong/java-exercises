@@ -14,6 +14,10 @@ public class CyclicBarrierTest {
     private static final Logger LOGGER = LogManager.getLogger(CyclicBarrierTest.class);
 
     public static void main(String[] args) {
+        baseTest();
+    }
+
+    private static void baseTest() {
         CyclicBarrier barrier = new CyclicBarrier(2, () -> LOGGER.info("All sub task is end!"));
 
         for (int i = 0; i <10; i++) {
