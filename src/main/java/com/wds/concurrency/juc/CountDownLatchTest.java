@@ -113,4 +113,3 @@ public class CountDownLatchTest {
         countDownLatch.countDown();
     }
 }
-
