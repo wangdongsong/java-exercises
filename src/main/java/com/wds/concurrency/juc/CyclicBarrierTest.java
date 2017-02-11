@@ -18,7 +18,7 @@ public class CyclicBarrierTest {
     }
 
     private static void baseTest() {
-        CyclicBarrier barrier = new CyclicBarrier(2, () -> LOGGER.info("All sub task is end!"));
+        CyclicBarrier barrier = new CyclicBarrier(10, () -> LOGGER.info("All sub task is end!"));
 
         for (int i = 0; i <10; i++) {
             final Integer finalI = i;
@@ -32,6 +32,7 @@ public class CyclicBarrierTest {
             LOGGER.info("User index " + index + " is running");
             Thread.sleep(3000L);
             LOGGER.info("User index " + index + " is end");
+            //10个线程执行了await()方法后才会继续执行，否则阻塞
             barrier.await();
 
             LOGGER.info("User index " + index + " 后续的工作是...");

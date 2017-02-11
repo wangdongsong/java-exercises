@@ -16,8 +16,35 @@ public class PhaserAdvancedTest {
 
         //advanceBaseTest();
 
-        registerBaseTest();
+        ///registerBaseTest();
 
+        awaitAdvanceTest();
+
+    }
+
+    private static void awaitAdvanceTest() {
+        Phaser p = new Phaser(3);
+
+        new Thread( () -> {
+            LOGGER.info(Thread.currentThread().getName() + " A1 Begin");
+            try {
+                Thread.sleep(1000);
+            } catch (InterruptedException e) {
+                LOGGER.error(e.getMessage(), e);
+            }
+            LOGGER.info(p.getPhase());
+            p.awaitAdvance(0);
+            LOGGER.info(Thread.currentThread().getName() + " A1 End");
+
+        }).start();
+
+        new Thread( () -> {
+            advanceTest(p);
+        }).start();
+
+        new Thread( () -> {
+            advanceTest(p);
+        }).start();
     }
 
     /**
@@ -57,6 +84,6 @@ public class PhaserAdvancedTest {
         LOGGER.info(Thread.currentThread().getName() + " A begin");
         p.arriveAndAwaitAdvance();
         LOGGER.info(Thread.currentThread().getName() + " A end");
-        p.arriveAndAwaitAdvance();
+        //p.arriveAndAwaitAdvance();
     }
 }
