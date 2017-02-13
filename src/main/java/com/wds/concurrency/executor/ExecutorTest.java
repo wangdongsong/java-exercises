@@ -68,6 +68,8 @@ public class ExecutorTest {
 
         /*
          * 如果使用SynchronousQueue时，maxinumPoolSize参数起起作用
+         *
+         * 使用SynchronousQeue时，队列任务并不会放入队列中，如果任务超过最大线程数，会拒绝任务提交
          */
         ThreadPoolExecutor es = new ThreadPoolExecutor(7, 20, 5, TimeUnit.SECONDS, new SynchronousQueue<Runnable>(true));
 

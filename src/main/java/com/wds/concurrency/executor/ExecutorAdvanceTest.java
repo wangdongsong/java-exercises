@@ -4,10 +4,7 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 import java.util.Date;
-import java.util.concurrent.LinkedBlockingQueue;
-import java.util.concurrent.ThreadFactory;
-import java.util.concurrent.ThreadPoolExecutor;
-import java.util.concurrent.TimeUnit;
+import java.util.concurrent.*;
 import java.util.function.Function;
 import java.util.function.UnaryOperator;
 
@@ -24,12 +21,31 @@ public class ExecutorAdvanceTest {
 
         //baseExceptionTest();
 
-        rejectTaskExceptionTest();
+        //rejectTaskExceptionTest();
+
+        abortTaskPolicyTest();
+    }
+
+    /**
+     * AbortPolicy：抛出RejectedExecutionException异常
+     * CallerRunsPolicy：任务拒绝时，会使用调用线程池的Thread线程对象处理被拒绝的任务
+     * DiscardOldestPolicy：线程池放弃等待队列中最旧的未处理任务，然后将拒绝的任务添加到等待队列中
+     * DiscardPolicy：线程池丢弃被拒绝的任务
+     */
+    private static void abortTaskPolicyTest() {
+
+        //AbortPolicy
+        ThreadPoolExecutor tpe = new ThreadPoolExecutor(2, 3, 5, TimeUnit.SECONDS, new ArrayBlockingQueue<Runnable>(2), new ThreadPoolExecutor.AbortPolicy());
+
+        //CallerRunsPolicy
+        tpe = new ThreadPoolExecutor(2, 3, 5, TimeUnit.SECONDS, new ArrayBlockingQueue<Runnable>(2), new ThreadPoolExecutor.CallerRunsPolicy());
+        executeTask(tpe);
+
     }
 
     private static void rejectTaskExceptionTest() {
         //当任务队列为1时，提交任务会失败
-        ThreadPoolExecutor tpe = new ThreadPoolExecutor(2, 5, 5, TimeUnit.SECONDS, new LinkedBlockingQueue<>(1));
+        ThreadPoolExecutor tpe = new ThreadPoolExecutor(2, 3, 5, TimeUnit.SECONDS, new ArrayBlockingQueue<Runnable>(2));
         tpe.setThreadFactory( (thread) -> {
             Thread t = new Thread(thread);
             t.setName("wds" + new Date());
@@ -46,6 +62,11 @@ public class ExecutorAdvanceTest {
     private static void executeTask(ThreadPoolExecutor tpe) {
         for (int i = 0; i < 10; i++) {
             tpe.execute(() -> {
+                try {
+                    Thread.sleep(5000);
+                } catch (InterruptedException e) {
+                    LOGGER.error(e.getMessage(), e);
+                }
                 LOGGER.info(Thread.currentThread().getName() + " execute");
             });
         }
