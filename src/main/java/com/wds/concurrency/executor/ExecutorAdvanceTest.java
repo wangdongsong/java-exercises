@@ -39,6 +39,12 @@ public class ExecutorAdvanceTest {
 
         //CallerRunsPolicy
         tpe = new ThreadPoolExecutor(2, 3, 5, TimeUnit.SECONDS, new ArrayBlockingQueue<Runnable>(2), new ThreadPoolExecutor.CallerRunsPolicy());
+        //executeTask(tpe);
+
+        tpe = new ThreadPoolExecutor(2, 3, 5, TimeUnit.SECONDS, new ArrayBlockingQueue<Runnable>(1), new ThreadPoolExecutor.DiscardOldestPolicy());
+        //executeTask(tpe);
+
+        tpe = new ThreadPoolExecutor(2, 3, 5, TimeUnit.SECONDS, new ArrayBlockingQueue<Runnable>(1), new ThreadPoolExecutor.DiscardPolicy());
         executeTask(tpe);
 
     }
