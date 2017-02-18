@@ -20,8 +20,54 @@ public class ExecutorServiceTest {
 
     public static void main(String[] args) {
 
-        invokeAnyTest();
+        //invokeAnyTest();
 
+        //invokeAnyExceptionTest();
+
+        invokeAllTest();
+
+    }
+
+    /**
+     * invokeAll会对Callable抛出去的异常是可以处理的
+     *
+     * invokeAny方法而某一个任务正确的结束返回值，则Callable抛出去的异常在main()方法中不会处理处理，当所有的任务都没有正确返回
+     * 返回值时，则说明最后Callable抛出的异常在main方法中处理
+     */
+    private static void invokeAllTest() {
+        List list = new ArrayList<Callable>();
+        list.add(new CallableA());
+
+        list.add(new CallableExcption());
+
+        ExecutorService es = Executors.newCachedThreadPool();
+
+        try {
+            List getValueAs = es.invokeAll(list);
+        } catch (InterruptedException e) {
+            LOGGER.error(e.getMessage(), e);
+        }
+
+        es.shutdown();
+    }
+
+    private static void invokeAnyExceptionTest() {
+        List list = new ArrayList<Callable>();
+        list.add(new CallableA());
+
+        list.add(new CallableExcption());
+
+        ExecutorService es = Executors.newCachedThreadPool();
+        try {
+            String getValueA = (String) es.invokeAny(list);
+        } catch (InterruptedException e) {
+            LOGGER.error(e.getMessage(), e);
+        } catch (ExecutionException e) {
+            LOGGER.error(e.getMessage(), e);
+        }
+        LOGGER.info("子线程异常之后并未执行主线程执行");
+
+        es.shutdown();
     }
 
     /**
@@ -53,13 +99,14 @@ public class ExecutorServiceTest {
         } catch (ExecutionException e) {
             LOGGER.error(e.getMessage(), e);
         }
+        es.shutdown();
     }
 
     private static class CallableA implements Callable<String> {
         @Override
         public String call() throws Exception {
             LOGGER.info("CallableA begin " + System.currentTimeMillis());
-            for (int i = 0; i < 12345; i++) {
+            for (int i = 0; i < 2; i++) {
                 Math.random();
                 Math.random();
                 Math.random();
@@ -74,7 +121,7 @@ public class ExecutorServiceTest {
         @Override
         public String call() throws Exception {
             LOGGER.info("CallableB begin " + System.currentTimeMillis());
-            for (int i = 0; i < 223456; i++) {
+            for (int i = 0; i < 10; i++) {
                 Math.random();
                 Math.random();
                 Math.random();
@@ -82,6 +129,26 @@ public class ExecutorServiceTest {
             }
             LOGGER.info("CallabeB end" + System.currentTimeMillis());
             return "returnA";
+        }
+    }
+
+    /**
+     * 若不增加try-catch语句，则NullPointerException不会被捕获
+     *
+     * 需要手动添加try-catch语句以捕获执行过程中遇到的异常
+     */
+    private static class CallableExcption implements Callable<String> {
+        @Override
+        public String call() throws Exception {
+            try {
+                new CallableB().call();
+                if (true) {
+                    throw new NullPointerException();
+                }
+            } catch (Exception e) {
+                LOGGER.error(e.getMessage(), e);
+            }
+            return "returnException";
         }
     }
 
