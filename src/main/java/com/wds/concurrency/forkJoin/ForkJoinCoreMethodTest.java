@@ -50,6 +50,13 @@ public class ForkJoinCoreMethodTest {
             e.printStackTrace();
         }
 
+        //判断任务是否出现异常
+        LOGGER.info(futureTask.isCompletedAbnormally());
+        //判断任务是否正常执行完成
+        LOGGER.info(futureTask.isCompletedNormally());
+        //获取返回的异常
+        LOGGER.info(futureTask.getException());
+
         //ForkJoin也可以处理Callable接口
         futureTask = pool.submit(new Callable<String>() {
 
@@ -71,7 +78,12 @@ public class ForkJoinCoreMethodTest {
         LOGGER.info(pool.getQueuedTaskCount());
         //获得活动的线程个数
         LOGGER.info(pool.getActiveThreadCount());
-
+        //获得偷窃的任务个数
+        LOGGER.info(pool.getStealCount());
+        //获得正在运行并且不在阻塞状态下的线程个数
+        LOGGER.info(pool.getRunningThreadCount());
+        //判断任务池是否是静止未执行任务的状态
+        LOGGER.info(pool.isQuiescent());
 
         try {
             LOGGER.info(futureTask.get());
