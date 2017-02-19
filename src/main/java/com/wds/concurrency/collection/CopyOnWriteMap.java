@@ -6,6 +6,7 @@ import java.util.Map;
 import java.util.Set;
 
 /**
+ * 自定义实现的CopyOnWriteMap
  * Created by wds on 2015/10/24.
  */
 public class CopyOnWriteMap<K, V> implements Map<K, V>, Cloneable {
