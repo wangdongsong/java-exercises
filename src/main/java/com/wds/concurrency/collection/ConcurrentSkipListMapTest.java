@@ -3,6 +3,7 @@ package com.wds.concurrency.collection;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
+import javax.jws.soap.SOAPBinding;
 import java.util.Map;
 import java.util.concurrent.ConcurrentSkipListMap;
 
@@ -82,12 +83,36 @@ public class ConcurrentSkipListMapTest {
 
         @Override
         public int hashCode() {
-            return 0;
+            final int prime = 31;
+            int result = 1;
+            result = prime * result + id;
+            result = prime * result + ((username == null) ? 0 : username.hashCode());
+            return result;
         }
 
         @Override
         public boolean equals(Object obj) {
-            return false;
+            if (this == obj) {
+                return true;
+            }
+            if (obj == null) {
+                return false;
+            }
+            if (getClass() != obj.getClass()) {
+                return false;
+            }
+            UserInfo other = (UserInfo) obj;
+            if (id != other.id) {
+                return false;
+            }
+            if (username == null) {
+                if (other.username != null) {
+                    return false;
+                }
+            } else if (!username.equals(other.username)) {
+                return false;
+            }
+            return true;
         }
     }
 
