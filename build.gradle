@@ -83,4 +83,6 @@ dependencies {
 
     compile group: 'joda-time', name: 'joda-time', version: '2.9.5'
 
+    compile group:'org.apache.kafka', name:'kafka-clients', version:'0.10.2.0'
+
 }
