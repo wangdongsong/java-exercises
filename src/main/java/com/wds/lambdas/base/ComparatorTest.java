@@ -7,6 +7,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Comparator;
 import java.util.List;
+import java.util.function.Function;
 
 import static java.util.Comparator.comparing;
 
@@ -34,6 +35,7 @@ public class ComparatorTest {
 
         List<Point> points = Arrays.asList(new Point(3, 1), new Point(2, 2), new Point(1, 0), new Point(0, 1));
 
+        //生产排序健
         Comparator<Point> byX = (p1, p2) -> Integer.compare(p1.getX(), p2.getX());
 
         points.sort(byX);
@@ -42,6 +44,10 @@ public class ComparatorTest {
 
         Comparator<Point> compareByX = comparing(p -> p.getX());
     }
+
+//    public static <T, U extends Comparable<U>> Comparator<T> comparing(Function<T, U> keyExtractor) {
+//        return (c1, c2) -> keyExtractor.apply(c1).compareTo(keyExtractor.apply(c2));
+//    }
         
 
 }

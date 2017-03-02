@@ -18,6 +18,10 @@ public class Point implements Serializable {
 
     }
 
+    public int distance(int x, int y) {
+        return (this.x - x) * (this.x - x) + (this.y - y) * (this.y - y);
+    }
+
     @Override
     public String toString() {
         return "Point{" +
