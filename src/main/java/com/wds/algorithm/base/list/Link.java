@@ -9,8 +9,44 @@ public class Link {
     private Node first;
     private Node last;
 
-    public Link() {
+    public Link() {}
 
+    /**
+     * 链表中增加元素
+     * @param headNode 头元素
+     * @param nodeToInsert 待插入的新元素
+     * @param index 插入的位置
+     * @return
+     */
+    public Node addNode(Node headNode, Node nodeToInsert, int index) {
+        if (headNode == null) {
+            return nodeToInsert;
+        }
+
+        //判断位置
+        if ((index > size + 1) || index < 1) {
+            System.out.println("Index of node to insert is invalid. The valid inputs are 1 to " + (size + 1));
+            return headNode;
+        }
+
+        //表头插入
+        if (index == 1) {
+            nodeToInsert.setNext(headNode);
+        }else{
+            //链表中间或尾部插入
+            Node previousNode = headNode;
+            int count = 1;
+            while (count < index - 1) {
+                previousNode = previousNode.getNext();
+                count++;
+            }
+
+            Node currentNode = previousNode.getNext();
+            nodeToInsert.setNext(currentNode);
+            previousNode.setNext(nodeToInsert);
+        }
+        size++;
+        return headNode;
     }
 
     /**
@@ -35,7 +71,7 @@ public class Link {
      * 头部插入
      * @param data
      */
-    public void addFirest(int data) {
+    public void addFirst(int data) {
         if (size == 0) {
             fillStart(data);
         } else {
@@ -60,7 +96,7 @@ public class Link {
                 fillStart(data);
                 size++;
             } else if (index == 0) {
-                addFirest(data);
+                addFirst(data);
             } else if (size == index + 1) {
                 addLast(data);
             } else {
@@ -147,6 +183,22 @@ public class Link {
         first = null;
         last = null;
         size = 0;
+    }
+
+    public Node getFirst() {
+        return first;
+    }
+
+    public void setFirst(Node first) {
+        this.first = first;
+    }
+
+    public Node getLast() {
+        return last;
+    }
+
+    public void setLast(Node last) {
+        this.last = last;
     }
 
     private Node getNode(int index) {

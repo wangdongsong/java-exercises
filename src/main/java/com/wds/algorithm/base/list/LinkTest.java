@@ -23,6 +23,11 @@ public class LinkTest {
         link.reverse();
 
         link.printAll();
+
+        Node node = new Node(5);
+        link.addNode(link.getFirst(), node, 3);
+
+        link.printAll();
     }
 
 }

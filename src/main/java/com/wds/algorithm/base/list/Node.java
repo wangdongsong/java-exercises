@@ -15,6 +15,10 @@ public class Node {
         this.next = next;
     }
 
+    public Node(int data) {
+        this.data = data;
+    }
+
     public Node() {
     }
 
