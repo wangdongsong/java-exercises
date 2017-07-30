@@ -8,6 +8,7 @@ import java.util.concurrent.Executor;
 import java.util.concurrent.Executors;
 import java.util.concurrent.Future;
 import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 import static com.wds.async.bestPriceFinder.Util.delay;
 
@@ -28,6 +29,16 @@ public class DiscountShop {
     public static void main(String[] args) {
         DiscountShop disShop = new DiscountShop("test");
         disShop.findPrices("iPhone8").forEach((s) -> System.out.println(s));
+
+        //响应式测试
+        long start = System.nanoTime();
+        CompletableFuture[] futures = disShop.findPricesStream("iPhon8")
+                .map(f -> f.thenAccept(s -> System.out.println(s + "(done in" + ((System.nanoTime() - start)/ 1_000_000) + " msecs)")))
+                .toArray(size -> new CompletableFuture[size]);
+        //等待所有执行完成
+        CompletableFuture.allOf(futures).join();
+        //其中一个完成
+        CompletableFuture.anyOf(futures).join();
     }
 
     public List<String> findPrices(String product){
@@ -35,6 +46,19 @@ public class DiscountShop {
                 .map(Quote::parse)
                 .map(Discount::applyDiscount)
                 .collect(Collectors.toList());
+    }
+
+    /**
+     * 响应式优化
+     * @param product
+     * @return
+     */
+    public Stream<CompletableFuture<String>> findPricesStream(String product){
+        return shops.stream()
+                .map(shop -> CompletableFuture.supplyAsync(() -> shop.getPrice(product), executor))
+                .map(future -> future.thenApply(Quote::parse))
+                .map(future -> future.thenCompose(quote -> CompletableFuture.supplyAsync(() -> Discount.applyDiscount(quote), executor)));
+
     }
 
     /**
