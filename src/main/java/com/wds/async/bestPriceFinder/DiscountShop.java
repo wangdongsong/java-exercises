@@ -3,8 +3,10 @@ package com.wds.async.bestPriceFinder;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Random;
+import java.util.concurrent.CompletableFuture;
 import java.util.concurrent.Executor;
 import java.util.concurrent.Executors;
+import java.util.concurrent.Future;
 import java.util.stream.Collectors;
 
 import static com.wds.async.bestPriceFinder.Util.delay;
@@ -35,6 +37,34 @@ public class DiscountShop {
                 .collect(Collectors.toList());
     }
 
+    /**
+     * 异步
+     * @param product
+     * @return
+     */
+    public List<String> findFuturePrices(String product){
+        ExchangeService es = new ExchangeService();
+        List<CompletableFuture<String>> priceFutures = shops.stream()
+                //以异步方式取得每个shop中指定产品的原始价格
+                .map(shop -> CompletableFuture.supplyAsync(() -> shop.getPrice(product), executor))
+                .map(future -> future.thenApply(Quote::parse))
+                //使用另一个异步任务构造期望的Future申请折扣
+                //thenCompose方法允许对两个异步操作进行流水线，第一个操作完成时，将其结果作为参数传递给第二个操作。
+                .map(future -> future.thenCompose(quote -> CompletableFuture.supplyAsync(() -> Discount.applyDiscount(quote), executor)))
+                .collect(Collectors.toList());
+
+        //另一种常见场景
+        //需要将两个完全不相干的CompletableFuture对象的结果整合起来，不希望在等到第一个任务完全结束才开始第二项任务，使用thenCombine方法
+        List<CompletableFuture<Double>> futurePriceInUSD =shops.stream()
+                .map(shop -> CompletableFuture.supplyAsync(() -> shop.getDoublePrice(product))
+                        .thenCombine(CompletableFuture.supplyAsync(
+                                () -> ExchangeService.getRate(ExchangeService.Money.EUR, ExchangeService.Money.USD)),
+                                (price, rate) -> price * rate)).collect(Collectors.toList());
+
+        //等待流中的所有Future执行完毕并提取各自的返回值
+        return priceFutures.stream().map(CompletableFuture::join).collect(Collectors.toList());
+    }
+
     public DiscountShop(String name) {
         this.name = name;
         random = new Random(name.charAt(0) * name.charAt(1) * name.charAt(2));
@@ -44,6 +74,10 @@ public class DiscountShop {
         double price = calculatePrice(product);
         Discount.Code code = Discount.Code.values()[random.nextInt(Discount.Code.values().length)];
         return name + ":" + price + ":" + code;
+    }
+
+    public double getDoublePrice(String product){
+        return calculatePrice(product);
     }
 
     private double calculatePrice(String product) {
