@@ -27,4 +27,9 @@ public class Apple {
     public void setWeight(int weight) {
         this.weight = weight;
     }
+
+    @Override
+    public String toString() {
+        return this.color + "_" + this.weight;
+    }
 }
