@@ -9,6 +9,6 @@ import com.wds.java8InAction.ch01.Apple;
 public class AppleHeavyPredicate implements ApplePrediccate {
     @Override
     public boolean test(Apple apple) {
-        return false;
+        return apple.getWeight() > 150;
     }
 }
