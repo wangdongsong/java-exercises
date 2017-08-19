@@ -4,8 +4,10 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 import java.util.Arrays;
+import java.util.Iterator;
 import java.util.Optional;
 import java.util.OptionalInt;
+import java.util.concurrent.atomic.LongAdder;
 import java.util.stream.IntStream;
 import java.util.stream.Stream;
 
@@ -31,5 +33,11 @@ public class StreamBase {
         //拆箱
         Stream<Integer> integerStream = Stream.of(1, 2);
         IntStream intStream = integerStream.mapToInt(Integer::intValue);
+
+        Iterator<Integer> iteratorInt = Arrays.asList(3, 2, 1, 0, 9, 10).iterator();
+        LongAdder sum = new LongAdder();
+        iteratorInt.forEachRemaining(v -> sum.add(v));
+        LOGGER.info(sum);
+
     }
 }
