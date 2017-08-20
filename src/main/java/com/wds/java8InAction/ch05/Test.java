@@ -2,6 +2,7 @@ package com.wds.java8InAction.ch05;
 
 import java.util.Arrays;
 import java.util.List;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 /**
@@ -44,7 +45,23 @@ public class Test {
         List<Integer> number2 = Arrays.asList(3, 4);
         List<int[]> pairs = number.stream().flatMap(i -> number2.stream().map(j -> new int[]{i, j })).collect(Collectors.toList());
 
+        //查找和匹配
+        //allMatch、anyMatch、noneMatch、findFirst、findAny
 
+        System.out.println("--------------归约------------");
+        //归约
+        //元素求和
+        //reduce接受两个参数：1是初始值为0，一个是BinaryOperator<T>来将两个元素结合起来产生一个新值
+        int sum = number.stream().reduce(0, (a, b) -> a + b).intValue();
+        System.out.println(sum);
+        int sum2 = number.stream().reduce(0, Integer::sum);
+        //无初始值的reduce
+        Optional<Integer> sum3 = number.stream().reduce((a, b) -> a + b);
+        System.out.println(sum3.orElse(0));
+        //最大值、最小值
+        Optional<Integer> max = number.stream().reduce(Integer::max);
+        Optional<Integer> min = number.stream().reduce(Integer::min);
+        System.out.println("max=" + max.orElse(0) + " min=" + min.orElse(0));
     }
 
 
