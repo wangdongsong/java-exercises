@@ -2,6 +2,7 @@ package com.wds.java8InAction.ch05;
 
 import java.util.Arrays;
 import java.util.List;
+import java.util.stream.Collectors;
 
 /**
  * Created by wangdongsong1229@163.com on 2017/8/20.
@@ -20,6 +21,20 @@ public class Test {
         //跳过
         System.out.println("----------------------");
         numbers.stream().filter(integer -> integer % 2 == 0).skip(2).forEach(System.out::println);
+
+        //-----------------Mapping---------------------
+        List<String> words = Arrays.asList("Java 8", "Lambdas", "In", "Action");
+        List<Integer> wordLengths = words.stream().map(String::length).collect(Collectors.toList());
+
+        //流扁平化
+        //将每个单词折分成字符数组
+        List<String[]> result = words.stream().map(word -> word.split("")).distinct().collect(Collectors.toList());
+        for (String[] strings : result) {
+            System.out.println(strings[0]);
+        }
+        //flatMap扁平化
+        List<String> r = words.stream().map(word -> word.split("")).flatMap(Arrays::stream).distinct().collect(Collectors.toList());
+        r.forEach(System.out::print);
     }
 
 
