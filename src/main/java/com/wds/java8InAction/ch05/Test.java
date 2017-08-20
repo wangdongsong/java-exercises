@@ -3,7 +3,10 @@ package com.wds.java8InAction.ch05;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Optional;
+import java.util.OptionalInt;
 import java.util.stream.Collectors;
+import java.util.stream.IntStream;
+import java.util.stream.Stream;
 
 /**
  * Created by wangdongsong1229@163.com on 2017/8/20.
@@ -62,6 +65,37 @@ public class Test {
         Optional<Integer> max = number.stream().reduce(Integer::max);
         Optional<Integer> min = number.stream().reduce(Integer::min);
         System.out.println("max=" + max.orElse(0) + " min=" + min.orElse(0));
+
+        //数值流
+        //以下两个求和相等
+        //原始方式
+        words.stream().map(String::length).reduce(0, Integer::sum);
+        //映射到数值流
+        words.stream().mapToLong(String::length).sum();
+
+        //数值流，转换回对象流
+        IntStream intStream = words.stream().mapToInt(String::length);
+        Stream<Integer> stream = intStream.boxed();
+
+        //数值流 默认值
+        OptionalInt maxOptional = words.stream().mapToInt(String::length).max();
+        int maxValue = maxOptional.orElse(1);
+
+        //数值流，数值范围
+        IntStream evenNumbers = IntStream.range(1, 100).filter(n -> n % 2 == 0);
+
+        //生成勾股数值流
+        Stream<int[]> pythagoreanTriples = IntStream.range(1, 100).boxed().flatMap(a -> IntStream.rangeClosed(a, 100).filter(b -> Math.sqrt(a * a + b * b) % 1 == 0).mapToObj(b -> new int[]{a, b, (int)Math.sqrt(a * a + b * b)}));
+
+        //构建流
+        Stream<String> streamStr = Stream.of("java8", "lambda", "in", "action");
+        Stream<String> emptyStream = Stream.empty();
+        //创建无限流
+        Stream.iterate(0, n -> n + 2).limit(10).forEach(System.out::println);
+        //创建斐波纳契
+        Stream.iterate(new int[]{0, 1}, t -> new int[]{t[1], t[0] + t[1]}).limit(20);
+        //生成流
+        Stream.generate(Math::random).forEach(System.out::println);
     }
 
 
