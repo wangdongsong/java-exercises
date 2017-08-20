@@ -35,6 +35,16 @@ public class Test {
         //flatMap扁平化
         List<String> r = words.stream().map(word -> word.split("")).flatMap(Arrays::stream).distinct().collect(Collectors.toList());
         r.forEach(System.out::print);
+
+        //映射练习
+        //(1)给定个数字列表，返回一个由每个数的平方构成的列表
+        List<Integer> number = Arrays.asList(1, 2, 3, 4, 5);
+        List<Integer> squares = number.stream().map(n -> n * n).collect(Collectors.toList());
+        //(2)给定两个数字列表，返回所有的数对
+        List<Integer> number2 = Arrays.asList(3, 4);
+        List<int[]> pairs = number.stream().flatMap(i -> number2.stream().map(j -> new int[]{i, j })).collect(Collectors.toList());
+
+
     }
 
 
