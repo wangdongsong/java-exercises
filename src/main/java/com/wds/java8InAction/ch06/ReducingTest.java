@@ -38,5 +38,9 @@ public class ReducingTest {
         System.out.println(menuStatistics.getAverage());
 
         //连接字符串
+        String joinString = Dish.Menu.stream().map(Dish::getName).collect(Collectors.joining());
+        System.out.println(joinString);
+        joinString = Dish.Menu.stream().map(Dish::getName).collect(Collectors.joining(","));
+        System.out.println(joinString);
     }
 }
