@@ -42,5 +42,12 @@ public class ReducingTest {
         System.out.println(joinString);
         joinString = Dish.Menu.stream().map(Dish::getName).collect(Collectors.joining(","));
         System.out.println(joinString);
+
+        //自定义Reducing
+        //第一个为初始值
+        //第二个转换为热量的int
+        //第三个为BinaryOperator，将两个项目累积成一个同类型的值。
+        totalCalories = Dish.Menu.stream().collect(Collectors.reducing(0, Dish::getCalories,  (i, j ) -> i + j));
+        totalCalories = Dish.Menu.stream().collect(Collectors.reducing(0, Dish::getCalories, Integer::sum));
     }
 }
