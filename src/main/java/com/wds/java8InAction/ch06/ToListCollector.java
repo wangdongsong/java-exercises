@@ -36,6 +36,9 @@ public class ToListCollector<T> implements Collector<T, List<T>, List<T>> {
     }
 
     /**
+     *
+     * 并行操作需要
+     *
      * 合并两个结果容器：该方法返回一个供归约操作使用的函数，定义对流的各个子部分进行并行处理时，各个子部分归约所得的累加器
      * 要如何合并
      * @return
