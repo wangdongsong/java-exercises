@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.function.BiPredicate;
 
 /**
  * Created by wangdongsong1229@163.com on 2017/9/1.
@@ -21,6 +22,11 @@ public class MapTest {
         maps.entrySet().stream().filter((entry) -> entry.getValue() != null).forEach(stringListEntry -> {
             System.out.println(stringListEntry.getKey());
         });
+
+        BiPredicate<Integer, String> condition = (i, s)-> i>20 && s.startsWith("R");
+        System.out.println(condition.test(10,"Ram"));
+        System.out.println(condition.test(30,"Shyam"));
+        System.out.println(condition.test(30,"Ram"));
     }
 
 }
