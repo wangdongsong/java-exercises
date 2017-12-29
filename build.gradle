@@ -29,7 +29,7 @@ task createJavaProject << {
 
 //仓库
 repositories {
-	mavenLocal()
+	//mavenLocal()
     jcenter()
     mavenCentral()
     maven {
