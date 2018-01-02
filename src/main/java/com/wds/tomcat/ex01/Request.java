@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.io.InputStream;
 
 /**
+ * Request对象
  * Created by wangdongsong1229@163.com on 2017/12/27.
  */
 public class Request {
