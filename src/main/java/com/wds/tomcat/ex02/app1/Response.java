@@ -1,13 +1,14 @@
 package com.wds.tomcat.ex02.app1;
 
 import javax.servlet.ServletOutputStream;
+import javax.servlet.ServletResponse;
 import java.io.*;
 import java.util.Locale;
 
 /**
  * Created by wangdongsong1229@163.com on 2018/1/9.
  */
-public class Response {
+public class Response implements ServletResponse{
     private static final int BUFFER_SIZE = 1048;
     Request request;
     OutputStream output;
@@ -53,6 +54,11 @@ public class Response {
         return null;
     }
 
+    @Override
+    public String getContentType() {
+        return null;
+    }
+
     public Locale getLocale() {
         return null;
     }
@@ -66,9 +72,11 @@ public class Response {
         return writer;
     }
 
-    public boolean isCommited() {
-        return false;
+    @Override
+    public void setCharacterEncoding(String charset) {
+
     }
+
 
     public void reset() {
 
@@ -76,6 +84,11 @@ public class Response {
 
     public void resetBuffer() {
 
+    }
+
+    @Override
+    public boolean isCommitted() {
+        return false;
     }
 
     public void setBufferSize(int size) {
