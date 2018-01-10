@@ -2,6 +2,7 @@ package com.wds.tomcat.ex02.app1;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletInputStream;
+import javax.servlet.ServletRequest;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
@@ -13,7 +14,7 @@ import java.util.Map;
 /**
  * Created by wangdongsong1229@163.com on 2018/1/9.
  */
-public class Request {
+public class Request  implements ServletRequest {
     private InputStream input;
     private String uri;
 
@@ -48,6 +49,26 @@ public class Request {
 
     public String getRealPath(String path) {
         return null;
+    }
+
+    @Override
+    public int getRemotePort() {
+        return 0;
+    }
+
+    @Override
+    public String getLocalName() {
+        return null;
+    }
+
+    @Override
+    public String getLocalAddr() {
+        return null;
+    }
+
+    @Override
+    public int getLocalPort() {
+        return 0;
     }
 
     public RequestDispatcher getRequestDispatcher(String path) {
@@ -106,9 +127,11 @@ public class Request {
         return null;
     }
 
-    public String GetRemoteAddr() {
+    @Override
+    public String getRemoteAddr() {
         return null;
     }
+
 
     public String getRemoteHost() {
         return null;
