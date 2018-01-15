@@ -33,7 +33,7 @@ repositories {
     jcenter()
     mavenCentral()
     maven {
-        url { 'https://repo1.maven.org/maven2'; 'http://maven.oschina.net/content/groups/public/' }
+        url { 'https://repo1.maven.org/maven2'; 'http://maven.oschina.net/content/groups/public/'; 'http://repo.boundlessgeo.com/main/' }
     }
 }
 
@@ -84,5 +84,8 @@ dependencies {
     compile group: 'joda-time', name: 'joda-time', version: '2.9.5'
 
     compile group:'org.apache.kafka', name:'kafka-clients', version:'0.10.2.0'
+
+    // https://mvnrepository.com/artifact/edu.ucar/netcdfAll
+    compile group: 'edu.ucar', name: 'netcdfAll', version: '4.6.10'
 
 }
