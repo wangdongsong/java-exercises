@@ -24,8 +24,10 @@ public class NCFile {
             System.out.println(dataFile.findVariable("Temperature_height_above_ground"));
             System.out.println(dataFile.findVariable("lat"));
             //Variable dataVar = dataFile.findVariable("data");
+            //Variable refTime = dataFile.findVariable("refTime");
             Variable dataVar = dataFile.findVariable("Temperature_height_above_ground");
             Variable timeVar = dataFile.findVariable("time");
+            System.out.println(timeVar.getUnitsString());
             Variable latVar = dataFile.findVariable("lat");
             Variable lonVar = dataFile.findVariable("lon");
 
