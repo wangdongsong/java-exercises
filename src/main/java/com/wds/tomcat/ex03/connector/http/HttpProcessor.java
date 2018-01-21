@@ -1,6 +1,7 @@
 package com.wds.tomcat.ex03.connector.http;
 
 import com.wds.tomcat.ex03.ServletProcessor;
+import com.wds.tomcat.ex03.StaticResourceProcessor;
 import com.wds.tomcat.ex03.utils.RequestUtil;
 import org.apache.naming.StringManager;
 
@@ -20,7 +21,6 @@ public class HttpProcessor {
     private HttpResponse response;
     private HttpRequestLine requestLine = new HttpRequestLine();
     protected StringManager sm =StringManager.getManager("com.wds.tomcat.ex03.connector.http");
-//    protected StringManager
 
     public HttpProcessor(HttpConnector connector) {
         this.connector = connector;

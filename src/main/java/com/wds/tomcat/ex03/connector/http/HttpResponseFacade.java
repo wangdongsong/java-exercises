@@ -62,6 +62,11 @@ public class HttpResponseFacade implements HttpServletResponse {
     return response.getCharacterEncoding();
   }
 
+  @Override
+  public String getContentType() {
+    return null;
+  }
+
   public Locale getLocale() {
     return response.getLocale();
   }
@@ -72,6 +77,11 @@ public class HttpResponseFacade implements HttpServletResponse {
 
   public PrintWriter getWriter() throws IOException {
     return response.getWriter();
+  }
+
+  @Override
+  public void setCharacterEncoding(String charset) {
+
   }
 
   public boolean isCommitted() {
