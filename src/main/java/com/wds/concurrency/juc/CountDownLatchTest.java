@@ -57,7 +57,7 @@ public class CountDownLatchTest {
 
         countDownLatch.await();
 
-        LOGGER.info("Main is end");
+        LOGGER.info("All worder complete");
     }
 
     private static void run(int i, CountDownLatch countDownLatch) {

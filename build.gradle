@@ -30,11 +30,8 @@ task createJavaProject << {
 //仓库
 repositories {
 	mavenLocal()
-    jcenter()
-    mavenCentral()
-    maven {
-        url { 'https://repo1.maven.org/maven2'; 'http://maven.oschina.net/content/groups/public/' }
-    }
+    maven { url "http://nexus-stock.paic.com.cn:8080/nexus/content/repositories/public/" }
+    maven { url "http://nexus-stock.paic.com.cn:8080/nexus/content/repositories/3rdparty/" }
 }
 
 configurations {
